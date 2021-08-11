@@ -15,18 +15,7 @@ class WebServer(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type', 'text/html')
         self.end_headers()
-        self.wfile.write(b"""
-        
-        <html>
-            <head>
-                <title>Some html i did remember</title>
-            </head>
-            <body>
-                <h1>Simple http server</h1>
-            </body>
-        </html>
-        
-        """)
+        self.wfile.write(bytes(html_context.prettify()))
 
 if __name__ == "__main__":
     webServer = HTTPServer((IP, PORT), WebServer)
